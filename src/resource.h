@@ -112,7 +112,6 @@ namespace cg
 		};
 		static unsigned_color from_float3(const float3& color)
 		{
-			// TODO
 			float3 preprocessed = clamp(255.f * color, 0.f, 255.f);
 			unsigned_color out{};
 			out.r = static_cast<uint8_t>(preprocessed.x);

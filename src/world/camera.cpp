@@ -106,7 +106,6 @@ const float4x4 cg::world::camera::get_projection_matrix() const
 
 const float3 cg::world::camera::get_position() const
 {
-	// TODO Lab: 1.04 Implement `cg::world::camera` class
 	return position;
 }
 

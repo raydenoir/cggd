@@ -15,7 +15,6 @@ void cg::renderer::rasterization_renderer::init()
 	model = std::make_shared<cg::world::model>();
 	model->load_obj(settings->model_path);
 
-	// TODO Lab: 1.04 Setup an instance of camera `cg::world::camera` class in `cg::renderer::rasterization_renderer`
 	camera = std::make_shared<cg::world::camera>();
 	camera->set_height(static_cast<float>(settings->height));
 	camera->set_width(static_cast<float>(settings->width));
@@ -52,7 +51,6 @@ void cg::renderer::rasterization_renderer::render()
 	};
 
 
-	// TODO Lab: 1.02 Implement image clearing & saving in `cg::renderer::rasterization_renderer` class
 	auto start = std::chrono::high_resolution_clock::now();
 
 	rasterizer->clear_render_target({0, 0, 0});
