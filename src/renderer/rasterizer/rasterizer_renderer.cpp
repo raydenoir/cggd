@@ -44,16 +44,21 @@ void cg::renderer::rasterization_renderer::render()
 	};
 
 	rasterizer->pixel_shader = [](cg::vertex data, float z) {
+		// get normalized normal vector
+		float3 normal = normalize(float3{data.nx, data.ny, data.nz});
+
+		// use coordinates to produce color (mapped from [-1,1] to [0,1])
 		return cg::color{
-				data.ambient_r,
-				data.ambient_g,
-				data.ambient_b};
+				(normal.x + 1.0f) / 2.0f,// Red channel based on x normal
+				(normal.y + 1.0f) / 2.0f,// Green channel based on y normal
+				(normal.z + 1.0f) / 2.0f // Blue channel based on z normal
+		};
 	};
 
 
 	auto start = std::chrono::high_resolution_clock::now();
 
-	rasterizer->clear_render_target({0, 0, 0});
+	rasterizer->clear_render_target({159, 43, 104});
 
 	auto stop = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> duration = stop - start;
